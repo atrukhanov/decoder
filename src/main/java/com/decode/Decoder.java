@@ -8,7 +8,7 @@ public class Decoder {
         int input = number;
         int index = 1;
         StringBuffer code = new StringBuffer();
-        while (input > 0 && index < 8) {
+        while (input >= 0 && index < 8) {
             code.append((byte) (input % 2));
             input = input / 2;
             index++;
@@ -32,7 +32,7 @@ public class Decoder {
         }
         int headOctet = 0;
         mask = 1 << 7;
-        headOctet = mask | inputData;
+        headOctet = mask | numOctets;
         hexCode.addFirst(Integer.toHexString(headOctet));
         return String.join(" ", hexCode);
     }
