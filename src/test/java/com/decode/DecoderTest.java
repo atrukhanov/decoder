@@ -3,6 +3,7 @@ package com.decode;
 import org.junit.jupiter.api.BeforeAll;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DecoderTest {
 
@@ -27,5 +28,18 @@ class DecoderTest {
     @org.junit.jupiter.api.Test
     void decodeFromLongTest() {
         assertEquals("10403",dc.decodeFromLong("80 28 a3"));
+    }
+    @org.junit.jupiter.api.Test
+    void decodeFromShortTestException() {
+        assertEquals("Error. Wrong code.",dc.decodeFromShort("123"));
+    }
+    @org.junit.jupiter.api.Test
+    void decodeFromLongTestWrongFormat() {
+        assertEquals("Error, wrong code",dc.decodeFromLong("123"));
+    }
+
+    @org.junit.jupiter.api.Test
+    void decodeFromLongTestWrongData() {
+        assertEquals("Error, wrong code",dc.decodeFromLong("123 453"));
     }
 }
