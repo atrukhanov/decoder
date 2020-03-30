@@ -1,5 +1,6 @@
 package com.decode;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Decoder {
@@ -54,6 +55,9 @@ public class Decoder {
         String[] arrayOctets = code.split(" ");
         StringBuffer decodeValue = new StringBuffer();
         String binaryString = "";
+        if(arrayOctets.length < 2) {
+            return "Error, wrong code";
+        }
         for (int i = 1; i < arrayOctets.length; i++){
             if(arrayOctets[i].length() != 2){
                 return "Error, wrong code";
@@ -66,7 +70,8 @@ public class Decoder {
             }
             decodeValue.append(String.format("%8s", binaryString).replace(' ', '0'));
         }
-        int decodeInt = Integer.parseInt(decodeValue.toString(),2);
-        return Integer.toString(decodeInt);
+
+        //int decodeInt = Integer.parseInt(decodeValue.toString(),2);
+        return (decodeValue.toString());
     }
 }
